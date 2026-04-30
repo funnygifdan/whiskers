@@ -1,0 +1,139 @@
+:root {
+  --nav: #000000;
+ --blue: #008ae6;
+ --black: #000000;
+ --dark-gray: #1a1a1a;
+ --pink: #FF1493;
+ --green: #00ff00;
+ --bg: #000;
+}
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+html, body {
+ height: 100%;
+}
+body {
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ font-family: Arial, sans-serif;
+ background: linear-gradient(85deg, var(--black), var(--blue), var(--pink));
+ background-size: 400% 400%;
+ animation: bgShift 28s ease infinite;
+ color: white;
+ overflow: hidden;
+ position: relative;
+}
+@keyframes bgShift {
+ 0% { background-position: 0% 50%; }
+ 50% { background-position: 100% 50%; }
+ 100% { background-position: 0% 50%; }
+}
+header{
+  min-height: 64px;
+  height: 100px;
+  padding: 0px 1rem;
+  width: 100%; /* full width always */
+  max-width: 1200px;
+  margin: 0 auto;/* center it */
+  background: black;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  /*padding: 0 1rem;*/
+  border-bottom: 2px solid #white;
+  z-index: 9999;
+}
+/* LOGO */
+.logo{
+  height: 52px;
+  width: 300px;/* keeps aspect ratio */
+  max-width: 100%;  /* prevents overflow */
+  top: 75px;
+  left: 50px;
+}
+#menuToggle {
+ position: fixed;
+ right: 1px;
+ top: 16px;
+ font-size: 2rem;
+ background: black;
+ color: white;
+ border-radius: 8px;
+ cursor: pointer;
+ padding: 0.5rem 0.75rem;
+ box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+nav#menuOverlay {
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ width: 100vw;
+ height: 70vh;
+ backdrop-filter: blur(18px);
+ background: rgba(15, 15, 15, 0.85);
+ transform: scaleY(0);
+ transform-origin: bottom center;
+ transition: transform 0.4s ease;
+ z-index: 900;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 2rem;
+ overflow-y: auto;
+}
+#menuOverlay.open {
+ transform: scaleY(1);
+}
+.menu-header {
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ position: relative;
+}
+.menu-header h2 {
+ font-size: 2.5rem;
+ color: #00ffcc;
+}
+#closeMenu {
+ position: absolute;
+ right: 0;
+ font-size: 2rem;
+ background: none;
+ border: none;
+ color: white;
+ cursor: pointer;
+}
+main {
+ flex: 1;
+ overflow-y: auto;
+ background: linear-gradient(85deg, var(--black), var(--black), var(--pink));
+ background-size: 400% 400%;
+ animation: bgShift 28s ease infinite;
+      -webkit-overflow-scrolling: touch;
+ min-height: 0;
+}
+footer {
+ height: 60px;
+ width: 100%;
+ background: black;
+ display: flex; justify-content: center; align-items: center;
+ font-size: 1rem;
+ border-top: 2px solid #white; flex-shrink: 0;
+ z-index: 9999;
+}
+.menu-grid {
+ display: grid; grid-template-columns:  repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; width: 100%;
+}
+.menu-section a {
+ display: block;
+ margin: 0.25rem 0;
+ color: #00ffcc;
+ text-decoration: none;
+}
+.menu-section a:hover {
+ text-decoration: underline;
+}
