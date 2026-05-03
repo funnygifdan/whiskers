@@ -1,3 +1,101 @@
-<html>
-    
-</html>
+<style>
+  .contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input, textarea {
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    min-height: 180px;
+    resize: vertical;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  .note {
+    font-size: 13px;
+    color: gray;
+    margin-top: 10px;
+    text-align: center;
+  }
+</style>
+
+<div class="contact-container">
+  <h1>CONTACT US</h1>
+
+  <form id="contactForm">
+
+    <input type="text" name="user_name" placeholder="Your Name" required>
+
+    <input type="email" name="user_email" placeholder="Your Email" required>
+
+    <textarea name="message" placeholder="Write your message here..." required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="note">
+    Messages will be sent via EmailJS
+  </div>
+</div>
+
+<!-- EMAILJS SCRIPT -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  // Initialize EmailJS
+  (function () {
+    emailjs.init("SRGwT3NbCw-Wu1wBc");
+  })();
+
+  // Handle form submit
+  document.addEventListener("submit", function (e) {
+    if (e.target && e.target.id === "contactForm") {
+      e.preventDefault();
+
+      emailjs.sendForm(
+        "service_9eckk4i",
+        "template_m1soyic",
+        e.target
+      )
+      .then(function () {
+        alert("Message sent successfully!");
+        e.target.reset();
+      }, function (error) {
+        alert("Failed to send message.");
+        console.log(error);
+      });
+    }
+  });
+</script>
