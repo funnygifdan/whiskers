@@ -60,6 +60,9 @@
 
     <input type="email" name="user_email" placeholder="Your Email" required>
 
+    <!-- Future: auto-filled from gallery -->
+    <input type="hidden" name="product_name" value="General Inquiry">
+
     <textarea name="message" placeholder="Write your message here..." required></textarea>
 
     <button type="submit">Send Message</button>
@@ -70,16 +73,14 @@
   </div>
 </div>
 
-<!-- EMAILJS SCRIPT -->
+<!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 <script>
-  // Initialize EmailJS
-  (function () {
-    emailjs.init("SRGwT3NbCw-Wu1wBc");
-  })();
+  // INIT EMAILJS
+  emailjs.init("SRGwT3NbCw-Wu1wBc");
 
-  // Handle form submit
+  // Safe handler for dynamically loaded content
   document.addEventListener("submit", function (e) {
     if (e.target && e.target.id === "contactForm") {
       e.preventDefault();
@@ -92,9 +93,10 @@
       .then(function () {
         alert("Message sent successfully!");
         e.target.reset();
-      }, function (error) {
-        alert("Failed to send message.");
-        console.log(error);
+      })
+      .catch(function (error) {
+        console.log("EmailJS Error:", error);
+        alert("Failed to send message. Check console.");
       });
     }
   });
