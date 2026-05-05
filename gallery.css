@@ -1,0 +1,51 @@
+/* =========================
+   ARTWORK / GALLERY SYSTEM
+   ========================= */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 1rem;
+}
+
+/* Each card container */
+.art-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* prevents weird stretching */
+  overflow: hidden;
+}
+
+/* THE FIX for your oversized images */
+.art-card img {
+  width: 150px;
+  height: 250px;              /* 👈 controls image size */
+  object-fit: cover;          /* 👈 crops nicely instead of stretching */
+  border-radius: 10px;
+  display: block;
+}
+
+/* Order button */
+.order-link {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: #0099EA;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+.order-link:hover {
+  background: #00ffcc;
+  color: black;
+}
