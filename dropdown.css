@@ -1,0 +1,64 @@
+.dropdown-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.dropdown-btn:hover {
+  background-color: #555;
+}
+
+/* Responsive dropdown container */
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+/* Links inside dropdown */
+.dropdown-content a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid #ddd;
+
+  /* prevents overflow on long text */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Remove border from last item */
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Optional: make dropdown scroll if too long */
+.dropdown-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Optional: smooth animation version (if using .open class in JS) */
+.dropdown-content {
+  transition: max-height 0.3s ease;
+}
+
+.dropdown-content.open {
+  display: flex;
+}
