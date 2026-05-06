@@ -1,26 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Create lightbox once
-  const lightbox = document.createElement("div");
-  lightbox.classList.add("lightbox");
+document.addEventListener("click", (e) => {
+  const target = e.target;
 
-  const img = document.createElement("img");
-  lightbox.appendChild(img);
+  // IGNORE dropdown interactions completely
+  if (target.closest(".dropdown-btn") || target.closest(".dropdown-content")) {
+    return;
+  }
 
-  document.body.appendChild(lightbox);
+  if (target.tagName === "IMG" && target.closest(".art-card")) {
+    const lightbox = document.querySelector(".lightbox");
+    const img = lightbox.querySelector("img");
 
-  // Open lightbox when any gallery image is clicked
-  document.addEventListener("click", (e) => {
-    const target = e.target;
-
-    if (target.tagName === "IMG" && target.closest(".art-card")) {
-      img.src = target.src;
-      lightbox.classList.add("open");
-    }
-  });
-
-  // Close on click
-  lightbox.addEventListener("click", () => {
-    lightbox.classList.remove("open");
-    img.src = "";
-  });
+    img.src = target.src;
+    lightbox.classList.add("open");
+  }
 });
