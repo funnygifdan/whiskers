@@ -1,0 +1,38 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =====================
+     DROPDOWN
+  ====================== */
+  document.querySelectorAll(".dropdown-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      btn.nextElementSibling.classList.toggle("open");
+    });
+  });
+
+
+  /* =====================
+     LIGHTBOX (image expand)
+  ====================== */
+  const lightbox = document.createElement("div");
+  lightbox.classList.add("lightbox");
+
+  const img = document.createElement("img");
+  lightbox.appendChild(img);
+  document.body.appendChild(lightbox);
+
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+
+    if (target.classList.contains("zoom-img")) {
+      img.src = target.src;
+      lightbox.classList.add("open");
+    }
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("open");
+    img.src = "";
+  });
+
+});
