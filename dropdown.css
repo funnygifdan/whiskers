@@ -16,7 +16,7 @@
 
 /* Responsive dropdown container */
 .dropdown-content {
-  display: none;
+  display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 100%;
@@ -24,7 +24,19 @@
   background-color: #f1f1f1;
   border-radius: 4px;
   margin-top: 5px;
+
+  /* Hidden by default */
+  max-height: 0;
   overflow: hidden;
+
+  /* Smooth animation */
+  transition: max-height 0.3s ease;
+}
+
+/* When open */
+.dropdown-content.open {
+  max-height: 300px; /* adjust if you want taller */
+  overflow-y: auto;
 }
 
 /* Links inside dropdown */
@@ -34,7 +46,7 @@
   color: black;
   border-bottom: 1px solid #ddd;
 
-  /* prevents overflow on long text */
+  /* Prevent long text overflow */
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -46,19 +58,4 @@
 
 .dropdown-content a:hover {
   background-color: #ddd;
-}
-
-/* Optional: make dropdown scroll if too long */
-.dropdown-content {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-/* Optional: smooth animation version (if using .open class in JS) */
-.dropdown-content {
-  transition: max-height 0.3s ease;
-}
-
-.dropdown-content.open {
-  display: flex;
 }
